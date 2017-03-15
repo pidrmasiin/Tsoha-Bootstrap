@@ -2,9 +2,9 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Ei vielä linkkiä sovellukseeni](https://www.cs.helsinki.fi)
+* [Linkki dokumentaatiooni](https://github.com/pidrmasiin/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Ajattelin, että voisin tehdä puolueiden äänestyksiin perustuvan vaalikoneen. Ajatuksena on, että katsoisin eduskunnan sivuilta, miten puolueet ovat äänestäneet ja loisin sen kautta vaalikoneen. Kyseessä olisi siis nimenomaan puoluekantaa tarkasteleva vaalikone. 
