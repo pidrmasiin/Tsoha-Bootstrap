@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää vaalikoneeseen kysymys</h1>
+
+
+<div class="form-group">
+    <label>Kysymys</label>
+    <input class="form-control" value="Kansalaisaloite avioliiton säilyttämisestä aidosti tasa-arvoisena, miehen ja naisen välisenä liittona ja sukupuolineutraalin avioliittolain kumoamisesta" type="text">
+</div>
+<div class="form-group">
+    <label>Istunto ja päivämäärä</label>
+    <input class="form-control" value="Istunto 11/22.02.2017 " type="text">
+</div>
+<div class="form-group">
+    <label>Linkki äänestystulokseen</label>
+    <input class="form-control" value="https://www.eduskunta.fi/FI/Vaski/sivut/aanestys.aspx?aanestysnro=1&istuntonro=11&vuosi=2017" type="text">
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">Tallenna</button>
+</div>
+
+{% endblock %}
