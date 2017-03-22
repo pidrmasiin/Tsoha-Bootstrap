@@ -8,7 +8,10 @@ Yleisiä linkkejä:
 ## Linkit sivuille
 
 * [Linkki vastausten hallinnointiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tiettyVastaus)
-* [Linkki kysymyksen lisäämiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tiettyVastaus)
+* [Linkki kysymyksen lisäämiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys)
+* [Linkki tietokantatauluihin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tietokantayhteys)
+
+Muihin sivuihin pääsee sivuilta. 
 
 ## Työn aihe
 
