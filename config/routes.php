@@ -21,5 +21,5 @@
   });
   
   $routes->get('/lisaaKysymys', function() {
-    HelloWorldController::lisaaKysymys();
+      KysymysController::lisaaKysymys();
   });

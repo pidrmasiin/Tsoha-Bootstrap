@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää vaalikoneeseen kysymys</h1>
+
+<form method="post" action="{{base_path}}/lisaaKysymys">
+    <div class="form-group">
+        <label>Kysymys</label>
+        <input name="kysymys" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Istunto</label>
+        <input name="istunto" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Päivämäärä</label>
+        <input name="paivamaara" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Linkki äänestystulokseen</label>
+        <input name="linkki" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+
+{% endblock %}
