@@ -1,25 +1,34 @@
 <?php
 
-  $routes->get('/', function() {
+$routes->get('/', function() {
     HelloWorldController::index();
-  });
+});
 
-  $routes->get('/hiekkalaatikko', function() {
+$routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
-  });
-  
-   $routes->get('/esittely', function() {
+});
+
+$routes->get('/esittely', function() {
     HelloWorldController::esittely();
-  });
-  
-   $routes->get('/hallinto', function() {
+});
+
+$routes->get('/hallinto', function() {
     HelloWorldController::hallinto();
-  });
-  
-  $routes->get('/tiettyVastaus', function() {
+});
+
+$routes->get('/tiettyVastaus', function() {
     HelloWorldController::tulosPuolueittain();
-  });
-  
-  $routes->get('/lisaaKysymys', function() {
-      KysymysController::lisaaKysymys();
-  });
+});
+
+$routes->get('/lisaaKysymys', function() {
+    KysymysController::lisaaKysymys();
+});
+
+$routes->post('/lisaaKysymys', function() {
+    KysymysController::lisatty();
+});
+
+$routes->get('/lisaaKysymys/lisatty', function() {
+    KysymysController::ilmoitus();
+});
+

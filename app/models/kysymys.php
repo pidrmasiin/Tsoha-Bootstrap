@@ -39,7 +39,20 @@ class Kysymys extends BaseModel {
 
         return $kysymykset;
     }
-    
+
+    public function save() {
+        // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+        $query = DB::connection()->prepare('INSERT INTO Kysymys (kysymys, istunto, paivamaara, linkki) VALUES (:kysymys, :istunto, :paivamaara, :linkki) RETURNING id');
+        // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
+        $query->execute(array('kysymys' => $this->kysymys, 'istunto' => $this->istunto, 'paivamaara' => $this->paivamaara, 'linkki' => $this->linkki));
+        // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
+        $row = $query->fetch();
+//        Kint::trace();
+//        Kint::dump($row);
+        // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
+        $this->id = $row['id'];
+    }
+
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Kysymys WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
@@ -59,7 +72,5 @@ class Kysymys extends BaseModel {
 
         return null;
     }
-    
-    
 
 }
