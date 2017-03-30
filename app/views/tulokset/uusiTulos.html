@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää puolueen vastaus</h1>
+
+<form method="post" action="{{base_path}}/lisaaVastaus">
+    <div class="form-group">
+        <label>puolue</label>
+        <input name="puolue_id" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>kysymys</label>
+        <input name="kysymys_id" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>tulos</label>
+        <input name="tulos" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>jaa</label>
+        <input name="jaa" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>ei</label>
+        <input name="ei" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>tyhjia</label>
+        <input name="tyhja" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>poissa</label>
+        <input name="poissa" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+
+{% endblock %}

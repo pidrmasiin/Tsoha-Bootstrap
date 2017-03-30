@@ -4,7 +4,7 @@
 <h3>eli tulisiko avioliitto säilyttää aidosti tasa-arvoisena, miehen ja naisen välisenä liittona ja sukupuolineutraali avioliittolaki kumota</h3>
 
 <p>
-    <a href="#" class="btn btn-success">Lisää tulos</a>
+    <a href="{{base_path}}/lisaaVastaus" class="btn btn-success">Lisää tulos</a>
 </p>
 <table class="table table-striped table-bordered">
     <thead>
@@ -17,15 +17,15 @@
             <th>Poissa</th>
         </tr>
     </thead>
-
     <tbody>
         {% for tulos in tulokset %}
+
         <tr>
-            <td>Keskusta</td>
+            <td>Puolue::find({{tulos.id}})</td>
             <td>{{tulos.tulos}}</td>
             <td>{{tulos.jaa}}</td>
             <td>{{tulos.ei}}</td>
-            <td>{{tulos.tyhjia}}</td>
+            <td>{{tulos.tyhja}}</td>
             <td>{{tulos.poissa}}</td>
         </tr>
         {% endfor %}

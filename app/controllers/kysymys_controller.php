@@ -35,11 +35,11 @@ class KysymysController extends BaseController {
         Redirect::to('/lisaaKysymys/lisatty');
     }
 
-    public static function index() {
-        // Haetaan kaikki pelit tietokannasta
-        $kysymykset = Kysymys::all();
-        // Renderöidään views/game kansiossa sijaitseva tiedosto index.html muuttujan $games datalla
-        View::make('kysymys/uusiKysymys.html', array('kysymykset' => $kysymykset));
-    }
+//    public static function index() {
+//        // Haetaan kaikki pelit tietokannasta
+//        $kysymykset = Kysymys::all();
+//        // Renderöidään views/game kansiossa sijaitseva tiedosto index.html muuttujan $games datalla
+//        View::make('kysymys/uusiKysymys.html', array('kysymykset' => $kysymykset));
+//    }
 
 }

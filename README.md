@@ -7,8 +7,17 @@ Yleisiä linkkejä:
 
 ## Linkit sivuille
 
-* [Linkki vastausten hallinnointiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tiettyVastaus)
+### Linkit vastausten hallinnointiin
+
+* [Linkki tietyn kysymyksen vastauksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tiettyVastaus)
+* [Linkki puolueen vastausken lisaamiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaVastaus)
+
+### Linkit kysymysten hallinnointiin
 * [Linkki kysymyksen lisäämiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys)
+* [Linkki onnistumis ilmoitukseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys/lisatty)
+
+### Muut linkit
+
 * [Linkki tietokantatauluihin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tietokantayhteys)
 
 Muihin sivuihin pääsee sivuilta. 

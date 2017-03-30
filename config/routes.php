@@ -17,7 +17,19 @@ $routes->get('/hallinto', function() {
 });
 
 $routes->get('/tiettyVastaus', function() {
-    HelloWorldController::tulosPuolueittain();
+    TulosController::naytaTulokset();
+});
+
+$routes->get('/lisaaVastaus', function() {
+    TulosController::lisaaTulos();
+});
+
+$routes->post('/lisaaVastaus', function() {
+    TulosController::lisatty();
+});
+
+$routes->get('/tiettyVastaus/lisatty', function() {
+    TulosController::ilmoitus();
 });
 
 $routes->get('/lisaaKysymys', function() {
