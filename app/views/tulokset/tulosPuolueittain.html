@@ -9,7 +9,7 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Puolue</th>
+            <th>Puolueen id</th>
             <th>Tulos</th>
             <th>Jaa</th>
             <th>Ei</th>
@@ -21,7 +21,7 @@
         {% for tulos in tulokset %}
 
         <tr>
-            <td>Puolue::find({{tulos.id}})</td>
+            <td>{{tulos.id}}</td>
             <td>{{tulos.tulos}}</td>
             <td>{{tulos.jaa}}</td>
             <td>{{tulos.ei}}</td>

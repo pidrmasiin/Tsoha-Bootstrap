@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Kaikki kysymykset</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Kysymyksen id</th>
+            <th>Kysymys</th>
+            <th>Istunto</th>
+            <th>Paivämäärä</th>
+            <th>Linkki</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for kysymys in kysymykset %}
+        <tr>
+            <td>{{kysymys.id}}</td>
+            <td>{{kysymys.kysymys}}</td>
+            <td>{{kysymys.istunto}}</td>
+            <td>{{kysymys.paivamaara}}</td>
+            <td>{{kysymys.linkki}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

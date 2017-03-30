@@ -14,7 +14,6 @@ class TulosController extends BaseController {
 
     public static function naytaTulokset() {
         $tulokset = Tulos::all();
-
         View::make('tulokset/tulosPuolueittain.html', array('tulokset' => $tulokset));
     }
     

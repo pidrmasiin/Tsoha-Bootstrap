@@ -44,3 +44,7 @@ $routes->get('/lisaaKysymys/lisatty', function() {
     KysymysController::ilmoitus();
 });
 
+$routes->get('/kysymykset', function() {
+    KysymysController::naytaKysymykset();
+});
+

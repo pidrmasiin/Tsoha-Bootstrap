@@ -7,6 +7,11 @@
  */
 
 class KysymysController extends BaseController {
+    
+    public static function naytaKysymykset() {
+        $kysymykset = Kysymys::all();
+        View::make('kysymys/kysymykset.html', array('kysymykset' => $kysymykset));
+    }
 
     public static function lisaaKysymys() {
         View::make('kysymys/uusiKysymys.html');

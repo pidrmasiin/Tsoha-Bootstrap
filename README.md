@@ -14,7 +14,7 @@ Yleisiä linkkejä:
 
 ### Linkit kysymysten hallinnointiin
 * [Linkki kysymyksen lisäämiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys)
-* [Linkki onnistumis ilmoitukseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys/lisatty)
+* [Linkki kaikkiin kysymyksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/kysymykset)
 
 ### Muut linkit
 
