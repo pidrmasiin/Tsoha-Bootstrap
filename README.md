@@ -9,7 +9,7 @@ Yleisiä linkkejä:
 
 ### Linkit vastausten hallinnointiin
 
-* [Linkki tietyn kysymyksen vastauksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/tiettyVastaus)
+* [Linkki tietyn kysymyksen vastauksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/kysymykset/1)
 * [Linkki puolueen vastausken lisaamiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaVastaus)
 
 ### Linkit kysymysten hallinnointiin

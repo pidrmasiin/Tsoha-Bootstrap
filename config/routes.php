@@ -16,8 +16,8 @@ $routes->get('/hallinto', function() {
     HelloWorldController::hallinto();
 });
 
-$routes->get('/tiettyVastaus', function() {
-    TulosController::naytaTulokset();
+$routes->get('/kysymykset/:id', function($id){
+    TulosController::naytaTulokset($id);
 });
 
 $routes->get('/lisaaVastaus', function() {
@@ -28,9 +28,6 @@ $routes->post('/lisaaVastaus', function() {
     TulosController::lisatty();
 });
 
-$routes->get('/tiettyVastaus/lisatty', function() {
-    TulosController::ilmoitus();
-});
 
 $routes->get('/lisaaKysymys', function() {
     KysymysController::lisaaKysymys();
@@ -47,4 +44,5 @@ $routes->get('/lisaaKysymys/lisatty', function() {
 $routes->get('/kysymykset', function() {
     KysymysController::naytaKysymykset();
 });
+
 

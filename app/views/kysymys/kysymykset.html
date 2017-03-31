@@ -10,6 +10,7 @@
             <th>Istunto</th>
             <th>Paivämäärä</th>
             <th>Linkki</th>
+            <th>Painike vastauksiin</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
             <td>{{kysymys.istunto}}</td>
             <td>{{kysymys.paivamaara}}</td>
             <td>{{kysymys.linkki}}</td>
+            <td><a class="btn btn-default btn-sm" href="{{base_path}}/kysymykset/{{kysymys.id}}">Kysymyksen vastauksiin</a></td>
         </tr>
         {% endfor %}
     </tbody>

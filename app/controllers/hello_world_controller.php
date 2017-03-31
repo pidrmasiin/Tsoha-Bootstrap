@@ -18,10 +18,7 @@ class HelloWorldController extends BaseController {
         View::make('hallinto.html');
     }
 
-    public static function tulosPuolueittain() {
-        // Testaa koodiasi täällä
-        View::make('tulosPuolueittain.html');
-    }
+  
 
   
 

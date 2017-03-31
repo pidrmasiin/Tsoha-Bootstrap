@@ -17,9 +17,7 @@ class KysymysController extends BaseController {
         View::make('kysymys/uusiKysymys.html');
     }
 
-    public static function ilmoitus() {
-        View::make('kysymys/ilmoitus.html');
-    }
+   
 
     public static function lisatty() {
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
@@ -37,7 +35,7 @@ class KysymysController extends BaseController {
         $kysymys->save();
 
 //        // Ohjataan käyttäjä lisäyksen jälkeen pelin esittelysivulle
-        Redirect::to('/lisaaKysymys/lisatty');
+        Redirect::to('/kysymykset'. $kysymys->id);
     }
 
 //    public static function index() {
