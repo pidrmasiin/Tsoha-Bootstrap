@@ -2,34 +2,42 @@
 {% block content %}
 <h1>Lisää puolueen vastaus</h1>
 
+{% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+          <li>Joku kenttä tyhjä</li>
+      </ul>
+    </div>
+  {% endif %}
+
 <form method="post" action="{{base_path}}/lisaaVastaus">
     <div class="form-group">
         <label>puolue</label>
-        <input name="puolue_id" class="form-control" type="text">
+        <input name="puolue_id" class="form-control" value="{{attributes.puolue_id}}" type="text">
     </div>
     <div class="form-group">
         <label>kysymys</label>
-        <input name="kysymys_id" class="form-control" type="text">
+        <input name="kysymys_id" class="form-control" value="{{attributes.kysymys_id}}"  type="text">
     </div>
     <div class="form-group">
         <label>tulos</label>
-        <input name="tulos" class="form-control" type="text">
+        <input name="tulos" class="form-control" value="{{attributes.tulos}}"  type="text">
     </div>
     <div class="form-group">
         <label>jaa</label>
-        <input name="jaa" class="form-control" type="text">
+        <input name="jaa" class="form-control" value="{{attributes.jaa}}" type="text">
     </div>
     <div class="form-group">
         <label>ei</label>
-        <input name="ei" class="form-control" type="text">
+        <input name="ei" class="form-control" value="{{attributes.ei}}" type="text">
     </div>
     <div class="form-group">
         <label>tyhjia</label>
-        <input name="tyhja" class="form-control" type="text">
+        <input name="tyhja" class="form-control" value="{{attributes.tyhja}}"  type="text">
     </div>
     <div class="form-group">
         <label>poissa</label>
-        <input name="poissa" class="form-control" type="text">
+        <input name="poissa" class="form-control" value="{{attributes.poissa}}"  type="text">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>

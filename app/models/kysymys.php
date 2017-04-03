@@ -73,4 +73,7 @@ class Kysymys extends BaseModel {
         return null;
     }
 
+  
+    
+
 }

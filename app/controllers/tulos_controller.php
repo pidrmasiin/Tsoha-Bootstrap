@@ -22,7 +22,7 @@ class TulosController extends BaseController {
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;
 
-        $tulos = new Tulos(array(
+        $attribuutit = array(
             'puolue_id' => $params['puolue_id'],
             'kysymys_id' => $params['kysymys_id'],
             'tulos' => $params['tulos'],
@@ -30,19 +30,34 @@ class TulosController extends BaseController {
             'ei' => $params['ei'],
             'tyhja' => $params['tyhja'],
             'poissa' => $params['poissa']
-        ));
+        );
+        $array = array_values($attribuutit);
+        $errors = array();
+        $tulos = New Tulos($attribuutit);
 
-        $tulos->save();
+        for ($i = 0; $i < count($array); ++$i) {
+            $joku = $array[$i];
+            if ($joku == '' || $joku == null) {
+                array_push($errors, $joku);
+            }
+        }
 
+        if (count($errors) == 0) {
+            // Peli on validi, hyvä homma!
+            $tulos->save();
 
-        Redirect::to('/kysymykset');
+            Redirect::to('/kysymykset');
+        } else {
+            // Pelissä oli jotain vikaa :(
+
+            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors));
+        }
     }
 
     public static function naytaTulokset($id) {
         $kysymys = Kysymys::find($id);
         $tulokset = Tulos::all();
-        View::make('tulokset/tulosPuolueittain.html', array('tulokset' => $tulokset), array('kysymys' => $kysymys));
-        
+        View::make('tulokset/tulosPuolueittain.html', array('tulokset' => $tulokset, 'kysymys' => $kysymys));
     }
 
     public static function ilmoitus() {

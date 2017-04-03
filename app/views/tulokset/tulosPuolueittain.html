@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-{% for kysymys in kysymys %}
+
 <h1>{{kysymys.kysymys}}</h1>
-{% endfor %}
-<h3>eli tulisiko avioliitto säilyttää aidosti tasa-arvoisena, miehen ja naisen välisenä liittona ja sukupuolineutraali avioliittolaki kumota</h3>
+
+
 
     <p>
         <a href="{{base_path}}/lisaaVastaus" class="btn btn-success">Lisää tulos</a>
@@ -21,17 +21,16 @@
         </thead>
         <tbody>
             {% for tulos in tulokset %}
-
-       
+            {% if tulos.kysymys_id == kysymys.id %}
             <tr>
-                <td>{{tulos.id}}</td>
+                <td>{{tulos.puolue_id}}</td>
                 <td>{{tulos.tulos}}</td>
                 <td>{{tulos.jaa}}</td>
                 <td>{{tulos.ei}}</td>
                 <td>{{tulos.tyhja}}</td>
                 <td>{{tulos.poissa}}</td>
             </tr>
-         
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>

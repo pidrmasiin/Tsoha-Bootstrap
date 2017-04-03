@@ -8,25 +8,26 @@
 
 class Tulos extends BaseModel {
 
-    // Attribuutit
+// Attribuutit
     public $id, $puolue_id, $kysymys_id, $tulos, $jaa, $ei, $tyhja, $poissa;
 
-    // Konstruktori
+// Konstruktori
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_sisalto');
     }
 
     public static function all() {
-        // Toi DB on tässä luokka, jonka metodit löytyy libin alta
+// Toi DB on tässä luokka, jonka metodit löytyy libin alta
         $query = DB::connection()->prepare('SELECT * FROM Tulos');
-        // toi nää pari metodia löytyy PDA-kirjastosta, johon tää DB:n connection metodi tän liitti
+// toi nää pari metodia löytyy PDA-kirjastosta, johon tää DB:n connection metodi tän liitti
         $query->execute();
         $rows = $query->fetchAll();
         $tulokset = array();
 
 
         foreach ($rows as $row) {
- 
+
             $tulokset[] = new Tulos(array(
                 'id' => $row['id'],
                 'puolue_id' => $row['puolue_id'],
@@ -64,18 +65,21 @@ class Tulos extends BaseModel {
 
         return null;
     }
-    
-      public function save() {
-        // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+
+    public function save() {
+// Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
         $query = DB::connection()->prepare('INSERT INTO Tulos (puolue_id, kysymys_id, tulos, jaa, ei, tyhja, poissa) VALUES (:puolue_id, :kysymys_id, :tulos, :jaa, :ei, :tyhja, :poissa) RETURNING id');
-        // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
-        $query->execute(array('puolue_id' => $this->puolue_id, 'kysymys_id' => $this->kysymys_id, 'tulos' => $this->tulos,'jaa' => $this->jaa, 'ei' => $this->ei, 'tyhja' => $this->tyhja, 'poissa' => $this->poissa));
-        // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
+// Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
+        $query->execute(array('puolue_id' => $this->puolue_id, 'kysymys_id' => $this->kysymys_id, 'tulos' => $this->tulos, 'jaa' => $this->jaa, 'ei' => $this->ei, 'tyhja' => $this->tyhja, 'poissa' => $this->poissa));
+// Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
         $row = $query->fetch();
 //        Kint::trace();
 //        Kint::dump($row);
-        // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
+// Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
         $this->id = $row['id'];
     }
+
+    
+    
 
 }
