@@ -16,18 +16,7 @@ $routes->get('/hallinto', function() {
     HelloWorldController::hallinto();
 });
 
-$routes->get('/kysymykset/:id', function($id){
-    TulosController::naytaTulokset($id);
-});
-
-$routes->get('/lisaaVastaus', function() {
-    TulosController::lisaaTulos();
-});
-
-$routes->post('/lisaaVastaus', function() {
-    TulosController::lisatty();
-});
-
+//KysymysController:: ALLA
 
 $routes->get('/lisaaKysymys', function() {
     KysymysController::lisaaKysymys();
@@ -43,6 +32,37 @@ $routes->get('/lisaaKysymys/lisatty', function() {
 
 $routes->get('/kysymykset', function() {
     KysymysController::naytaKysymykset();
+});
+
+//TulosController:: ALLA
+
+$routes->get('/kysymykset/:id', function($id){
+    TulosController::naytaTulokset($id);
+});
+
+$routes->get('/lisaaVastaus/:id', function($id) {
+    TulosController::lisaaTulos($id);
+});
+
+$routes->post('/lisaaVastaus', function() {
+    TulosController::lisatty();
+});
+
+
+$routes->get('/poistaTulos/:tulosid', function($tulosid){
+    TulosController::ilmoitus($tulosid);
+});
+
+$routes->post('/poistaTulos/:tulosid/poista', function($tulosid){
+    TulosController::poista($tulosid);
+});
+
+$routes->get('/muokkaaVastausta/:id', function($id){
+    TulosController::muokkaa($id);
+});
+
+$routes->post('/paivita/:id', function($id){
+    TulosController::paivita($id);
 });
 
 

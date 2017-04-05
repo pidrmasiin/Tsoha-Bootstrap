@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muokkaa puolueen {{tulos.puolue_id}} vastaus kysymykseen {{tulos.kysymys_id}}</h1>
+
+{% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+          <li>Joku kenttä tyhjä</li>
+      </ul>
+    </div>
+  {% endif %}
+
+<form method="post" action="{{base_path}}/paivita/{{tulos.id}}">
+    <div class="form-group">
+        <label>puolue</label>
+        <input name="puolue_id" class="form-control" value="{{tulos.puolue_id}}" type="text">
+    </div>
+    <div class="form-group">
+        <label>kysymys</label>
+        <input name="kysymys_id" class="form-control" value="{{tulos.kysymys_id}}"  type="text">
+    </div>
+    <div class="form-group">
+        <label>tulos</label>
+        <input name="tulos" class="form-control" value="{{tulos.tulos}}"  type="text">
+    </div>
+    <div class="form-group">
+        <label>jaa</label>
+        <input name="jaa" class="form-control" value="{{tulos.jaa}}" type="text">
+    </div>
+    <div class="form-group">
+        <label>ei</label>
+        <input name="ei" class="form-control" value="{{tulos.ei}}" type="text">
+    </div>
+    <div class="form-group">
+        <label>tyhjia</label>
+        <input name="tyhja" class="form-control" value="{{tulos.tyhja}}"  type="text">
+    </div>
+    <div class="form-group">
+        <label>poissa</label>
+        <input name="poissa" class="form-control" value="{{tulos.poissa}}"  type="text">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Päivitä</button>
+    </div>
+</form>
+
+{% endblock %}

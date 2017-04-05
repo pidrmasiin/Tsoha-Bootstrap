@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Lisää puolueen vastaus</h1>
+<h1>Lisää puolueen vastaus kysymykseen {{kysymys.id}}</h1>
 
 {% if errors %}
     <div class="alert alert-danger">
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label>kysymys</label>
-        <input name="kysymys_id" class="form-control" value="{{attributes.kysymys_id}}"  type="text">
+        <input name="kysymys_id" class="form-control" value="{{kysymys.id}}"  type="text">
     </div>
     <div class="form-group">
         <label>tulos</label>

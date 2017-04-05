@@ -44,7 +44,7 @@ class Tulos extends BaseModel {
     }
 
     public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Kysymys WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
@@ -79,7 +79,18 @@ class Tulos extends BaseModel {
         $this->id = $row['id'];
     }
 
+    public function poista($tulosid) {
+        $query = DB::connection()->prepare('DELETE FROM Tulos WHERE id ='. $tulosid);
+        $query->execute();
+        
+    }
     
+    
+    public function paivita($id){
+        
+        $query = DB::connection()->prepare('UPDATE Tulos SET puolue_id = :puolue_id, kysymys_id = :kysymys_id, tulos = :tulos, jaa = :jaa, ei = :ei, tyhja = :tyhja, poissa = :poissa WHERE id = '. $id);
+        $query->execute(array('puolue_id' => $this->puolue_id, 'kysymys_id' => $this->kysymys_id, 'tulos' => $this->tulos, 'jaa' => $this->jaa, 'ei' => $this->ei, 'tyhja' => $this->tyhja, 'poissa' => $this->poissa));
+    }
     
 
 }

@@ -5,33 +5,37 @@
 
 
 
-    <p>
-        <a href="{{base_path}}/lisaaVastaus" class="btn btn-success">Lisää tulos</a>
-    </p>
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Puolueen id</th>
-                <th>Tulos</th>
-                <th>Jaa</th>
-                <th>Ei</th>
-                <th>Tyhjiä</th>
-                <th>Poissa</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for tulos in tulokset %}
-            {% if tulos.kysymys_id == kysymys.id %}
-            <tr>
-                <td>{{tulos.puolue_id}}</td>
-                <td>{{tulos.tulos}}</td>
-                <td>{{tulos.jaa}}</td>
-                <td>{{tulos.ei}}</td>
-                <td>{{tulos.tyhja}}</td>
-                <td>{{tulos.poissa}}</td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endblock %}
+<p>
+    <a href="{{base_path}}/lisaaVastaus/{{kysymys.id}}" class="btn btn-success">Lisää tulos</a>
+</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Puolueen id</th>
+            <th>Tulos</th>
+            <th>Jaa</th>
+            <th>Ei</th>
+            <th>Tyhjiä</th>
+            <th>Poissa</th>
+            <th>Muokkaa</th>
+            <th>Poista vastaus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tulos in tulokset %}
+        {% if tulos.kysymys_id == kysymys.id %}
+        <tr>
+            <td>{{tulos.puolue_id}}</td>
+            <td>{{tulos.tulos}}</td>
+            <td>{{tulos.jaa}}</td>
+            <td>{{tulos.ei}}</td>
+            <td>{{tulos.tyhja}}</td>
+            <td>{{tulos.poissa}}</td>
+            <td><a href="{{base_path}}/muokkaaVastausta/{{tulos.id}}" class="btn btn-success">Muokkaa</button></td>
+            <td><a href="{{base_path}}/poistaTulos/{{tulos.id}}" class="btn btn-success">Poista</button></a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
