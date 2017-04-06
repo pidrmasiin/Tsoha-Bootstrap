@@ -97,9 +97,14 @@ class TulosController extends BaseController {
                 array_push($errors, $joku);
             }
         }
-        if( !is_numeric($params['jaa']) || !is_numeric($params['ei']) || !is_numeric($params['tyhja']) || !is_numeric($params['poissa'])){
+        if(!is_numeric($params['kysymys_id']) || !is_numeric($params['puolue_id']) || !is_numeric($params['jaa']) || !is_numeric($params['ei']) || !is_numeric($params['tyhja']) || !is_numeric($params['poissa'])){
             array_push($errors, $joku);
         }
+      
+        if($params['tulos']!= 'jaa' && $params['tulos']!= 'ei' && $params['tulos']!= 'eos'){
+            array_push($errors, $joku);
+        }
+        
         $joku = $attribuutit['kysymys_id'];
         $jaa = $params['jaa'];
         if (count($errors) == 0) {
