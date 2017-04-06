@@ -1,19 +1,29 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
+    HallintoController::index();
 });
 
 $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    HallintoController::sandbox();
 });
 
 $routes->get('/esittely', function() {
-    HelloWorldController::esittely();
+    HallintoController::esittely();
 });
 
 $routes->get('/hallinto', function() {
-    HelloWorldController::hallinto();
+    HallintoController::hallinto();
+});
+
+$routes->get('/login', function() {
+    // Kirjautumislomakkeen esittäminen
+    HallintoController::login();
+});
+
+$routes->post('/login', function() {
+    // Kirjautumisen käsittely
+    HallintoController::handle_login();
 });
 
 //KysymysController:: ALLA
@@ -36,7 +46,7 @@ $routes->get('/kysymykset', function() {
 
 //TulosController:: ALLA
 
-$routes->get('/kysymykset/:id', function($id){
+$routes->get('/kysymykset/:id', function($id) {
     TulosController::naytaTulokset($id);
 });
 
@@ -49,19 +59,19 @@ $routes->post('/lisaaVastaus', function() {
 });
 
 
-$routes->get('/poistaTulos/:tulosid', function($tulosid){
+$routes->get('/poistaTulos/:tulosid', function($tulosid) {
     TulosController::ilmoitus($tulosid);
 });
 
-$routes->post('/poistaTulos/:tulosid/poista', function($tulosid){
+$routes->post('/poistaTulos/:tulosid/poista', function($tulosid) {
     TulosController::poista($tulosid);
 });
 
-$routes->get('/muokkaaVastausta/:id', function($id){
+$routes->get('/muokkaaVastausta/:id', function($id) {
     TulosController::muokkaa($id);
 });
 
-$routes->post('/paivita/:id', function($id){
+$routes->post('/paivita/:id', function($id) {
     TulosController::paivita($id);
 });
 

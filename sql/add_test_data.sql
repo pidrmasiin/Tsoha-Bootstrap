@@ -23,4 +23,8 @@ INSERT INTO Vastaus (kysymys_id, vastaus)
 VALUES 
     ((SELECT id FROM Kysymys WHERE istunto='11'), 'ei');
 
+INSERT INTO Kayttaja (nimi, salasana) 
+VALUES 
+    ('nimi', 'salasana');
+
 

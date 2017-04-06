@@ -45,6 +45,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{base_path}}/hallinto">Hallinto</a></li>
                     </ul>
+                    {% if user_logged_in %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{base_path}}/kysymykset">Kysymykset</a></li>
+                    </ul>
+                    {% endif %}
                 </div>
             </div>
         </nav>

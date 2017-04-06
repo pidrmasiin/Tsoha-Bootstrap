@@ -35,7 +35,7 @@ class KysymysController extends BaseController {
         $kysymys->save();
 
 //        // Ohjataan käyttäjä lisäyksen jälkeen pelin esittelysivulle
-        Redirect::to('/kysymykset'. $kysymys->id);
+        Redirect::to('/kysymykset/'. $kysymys->id);
     }
 
 //    public static function index() {

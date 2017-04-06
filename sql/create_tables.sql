@@ -28,5 +28,11 @@ CREATE TABLE Vastaus(
     vastaus varchar(10) NOT NULL
 );
 
+CREATE TABLE Kayttaja(
+    id SERIAL PRIMARY KEY,
+    nimi varchar(10) NOT NULL,
+    salasana varchar(10) 
+);
+
 
     

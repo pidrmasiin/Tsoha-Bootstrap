@@ -1,20 +1,24 @@
 # Tietokantasovelluksen esittelysivu
 
+# HUOM Vain alla olevassa sivu sietää väärien arvojen syöttämisen lomakkeeseen
+
+* [Linkki lähes toimivaan lomakkeeseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/muokkaaVastausta/1)
+
 Yleisiä linkkejä:
+
 
 * [Linkki sovellukseeni](http://pepa.users.cs.helsinki.fi/vaalikoneisto)
 * [Linkki dokumentaatiooni](https://github.com/pidrmasiin/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Linkit sivuille
 
-### Linkit vastausten hallinnointiin
-
-* [Linkki tietyn kysymyksen vastauksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/kysymykset/1)
-* [Linkki puolueen vastausken lisaamiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaVastaus)
-
 ### Linkit kysymysten hallinnointiin
-* [Linkki kysymyksen lisäämiseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/lisaaKysymys)
+
 * [Linkki kaikkiin kysymyksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/kysymykset)
+* [Linkki kaikkiin kysymyksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/hallinto)
+
+Käyttäjätunnut: nimi
+Salasana: salasana
 
 ### Muut linkit
 

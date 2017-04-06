@@ -2,6 +2,10 @@
 {% block content %}
 <h1>Kaikki kysymykset</h1>
 
+<p>
+    <a href="{{base_path}}/lisaaKysymys" class="btn btn-success">Lisää tulos</a>
+</p>
+
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -9,8 +13,9 @@
             <th>Kysymys</th>
             <th>Istunto</th>
             <th>Paivämäärä</th>
-            <th>Linkki</th>
-            <th>Painike vastauksiin</th>
+            <th>Linkki äänestykseen</th>
+            <th>Kysymyksen vastauksiin</th>
+            <th>Poista kysymys</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +25,9 @@
             <td>{{kysymys.kysymys}}</td>
             <td>{{kysymys.istunto}}</td>
             <td>{{kysymys.paivamaara}}</td>
-            <td>{{kysymys.linkki}}</td>
-            <td><a class="btn btn-default btn-sm" href="{{base_path}}/kysymykset/{{kysymys.id}}">Kysymyksen vastauksiin</a></td>
+            <td><a class="btn" href="{{kysymys.linkki}}">Äänestyksen sivuille</a></td>
+            <td><a class="btn btn-success" href="{{base_path}}/kysymykset/{{kysymys.id}}">Vastauksiin</a></td>
+            <td><a class="btn btn-danger" href="{{base_path}}/kysymykset">Ei vielä poista</a></td>
         </tr>
         {% endfor %}
     </tbody>

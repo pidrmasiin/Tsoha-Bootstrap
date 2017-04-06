@@ -88,6 +88,7 @@ class TulosController extends BaseController {
         );
         $array = array_values($attribuutit);
         $errors = array();
+        
         $tulos = New Tulos($attribuutit);
 
         for ($i = 0; $i < count($array); ++$i) {
@@ -96,7 +97,11 @@ class TulosController extends BaseController {
                 array_push($errors, $joku);
             }
         }
+        if( !is_numeric($params['jaa']) || !is_numeric($params['ei']) || !is_numeric($params['tyhja']) || !is_numeric($params['poissa'])){
+            array_push($errors, $joku);
+        }
         $joku = $attribuutit['kysymys_id'];
+        $jaa = $params['jaa'];
         if (count($errors) == 0) {
             // Peli on validi, hyvä homma!
             $tulos->paivita($id);
@@ -105,8 +110,18 @@ class TulosController extends BaseController {
         } else {
             // Pelissä oli jotain vikaa :(
 
-            View::make('tulokset/muokkaaTulosta.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
+            View::make('tulokset/muokkaaTulosta.html', array('attributes' => $tulos, 'errors' => $errors, 'kysymys' => $joku));
         }
     }
+
+    public static function tulos($tulos) {
+        if ($tulos == 'jaa' || $tulos == 'ei' || $tulos == 'eos') {
+            return $tulos;
+        } else {
+            return null;
+        }
+    }
+
+    
 
 }
