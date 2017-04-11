@@ -3,7 +3,7 @@
 <h1>Kaikki kysymykset</h1>
 
 <p>
-    <a href="{{base_path}}/lisaaKysymys" class="btn btn-success">Lisää tulos</a>
+    <a href="{{base_path}}/lisaaKysymys" class="btn btn-success">Lisää kysymys</a>
 </p>
 
 <table class="table table-striped table-bordered">
@@ -27,7 +27,7 @@
             <td>{{kysymys.paivamaara}}</td>
             <td><a class="btn" href="{{kysymys.linkki}}">Äänestyksen sivuille</a></td>
             <td><a class="btn btn-success" href="{{base_path}}/kysymykset/{{kysymys.id}}">Vastauksiin</a></td>
-            <td><a class="btn btn-danger" href="{{base_path}}/kysymykset">Ei vielä poista</a></td>
+            <td><a class="btn btn-danger" href="{{base_path}}/poistaKysymys/{{kysymys.id}}">Poista</a></td>
         </tr>
         {% endfor %}
     </tbody>

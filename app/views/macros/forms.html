@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{% macro virhe_ilmoitus(text) %}
+<div class="alert alert-danger">
+    <ul>
+        <li>Kenttä {{text}} oli tyhjä tai siinä oli väärä arvo</li>
+    </ul>
+</div>
+{% endmacro %}
+
+
+

@@ -65,6 +65,31 @@ class Tulos extends BaseModel {
 
         return null;
     }
+    
+    public static function findByKysymys($kysymys_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
+        $query->execute(array('kysymys_id' => $kysymys_id));
+        $rows = $query->fetchAll();
+        $tulokset = array();
+
+
+        foreach ($rows as $row) {
+
+            $tulokset[] = new Tulos(array(
+                'id' => $row['id'],
+                'puolue_id' => $row['puolue_id'],
+                'kysymys_id' => $row['kysymys_id'],
+                'tulos' => $row['tulos'],
+                'jaa' => $row['jaa'],
+                'ei' => $row['ei'],
+                'tyhja' => $row['tyhja'],
+                'poissa' => $row['poissa']
+            ));
+        }
+
+        return $tulokset;
+        
+    }
 
     public function save() {
 // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon

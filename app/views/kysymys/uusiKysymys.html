@@ -1,23 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
 <h1>Lisää vaalikoneeseen kysymys</h1>
+
+{% if errors %}
+{% for error in errors %}
+{{forms.virhe_ilmoitus("#{error.value}")}} 
+{% endfor %}
+{% endif %}
 
 <form method="post" action="{{base_path}}/lisaaKysymys">
     <div class="form-group">
         <label>Kysymys</label>
-        <input name="kysymys" class="form-control" type="text">
+        <input name="kysymys" class="form-control" value="{{attribuutit.kysymys}}" type="text">
     </div>
     <div class="form-group">
-        <label>Istunto</label>
-        <input name="istunto" class="form-control" type="text">
+        <label>Istunto (numeroarvo)</label>
+        <input name="istunto" class="form-control" value="{{attribuutit.istunto}}" type="text">
     </div>
     <div class="form-group">
-        <label>Päivämäärä</label>
-        <input name="paivamaara" class="form-control" type="text">
+        <label>Päivämäärä (pp-kk-vvvv) </label>
+        <input name="paivamaara" class="form-control" value="{{attribuutit.paivamaara}}" type="text">
     </div>
     <div class="form-group">
         <label>Linkki äänestystulokseen</label>
-        <input name="linkki" class="form-control" type="text">
+        <input name="linkki" class="form-control" value="{{attribuutit.linkki}}" type="text">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>

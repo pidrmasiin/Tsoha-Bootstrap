@@ -44,6 +44,14 @@ $routes->get('/kysymykset', function() {
     KysymysController::naytaKysymykset();
 });
 
+$routes->get('/poistaKysymys/:id', function($id) {
+    KysymysController::varmistus($id);
+});
+
+$routes->post('/poistaKysymys/:id/poista', function($id) {
+    KysymysController::poista($id);
+});
+
 //TulosController:: ALLA
 
 $routes->get('/kysymykset/:id', function($id) {

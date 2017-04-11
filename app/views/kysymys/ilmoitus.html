@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Kysymys lisatty</h1>
-<p>
-    <a href="{{base_path}}/lisaaKysymys" class="btn btn-success">Lisaa uusi kysymys</a>
-  </p>
+<h1>Haluatko varmasti poistaa kysymyksen ja kaikki siihen liittyvät vastaukset</h1>
+<form method="post" action="{{base_path}}/poistaKysymys/{{kysymys.id}}/poista" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">Poista kysymys ja siihen liittyvät vastaukset</button>
+</form>
+
 
 
 {% endblock %}

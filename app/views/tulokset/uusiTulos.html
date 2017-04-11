@@ -1,42 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
 <h1>Lisää puolueen vastaus kysymykseen {{kysymys.id}}</h1>
 
 {% if errors %}
-    <div class="alert alert-danger">
-      <ul>
-          <li>Joku kenttä tyhjä</li>
-      </ul>
-    </div>
-  {% endif %}
+{% for error in errors %}
+{{forms.virhe_ilmoitus('error')}} 
+{% endfor %}
+{% endif %}
 
 <form method="post" action="{{base_path}}/lisaaVastaus">
     <div class="form-group">
-        <label>puolue</label>
+        <label>puolue (numero)</label>
         <input name="puolue_id" class="form-control" value="{{attributes.puolue_id}}" type="text">
     </div>
     <div class="form-group">
-        <label>kysymys</label>
+        <label>kysymys (numero)</label>
         <input name="kysymys_id" class="form-control" value="{{kysymys.id}}"  type="text">
     </div>
     <div class="form-group">
-        <label>tulos</label>
+        <label>tulos (jaa/ei/eos)</label>
         <input name="tulos" class="form-control" value="{{attributes.tulos}}"  type="text">
     </div>
     <div class="form-group">
-        <label>jaa</label>
+        <label>jaa (montako numerona)</label>
         <input name="jaa" class="form-control" value="{{attributes.jaa}}" type="text">
     </div>
     <div class="form-group">
-        <label>ei</label>
+        <label>ei (montako numerona)</label>
         <input name="ei" class="form-control" value="{{attributes.ei}}" type="text">
     </div>
     <div class="form-group">
-        <label>tyhjia</label>
+        <label>tyhjia (montako numerona)</label>
         <input name="tyhja" class="form-control" value="{{attributes.tyhja}}"  type="text">
     </div>
     <div class="form-group">
-        <label>poissa</label>
+        <label>poissa (montako numerona)</label>
         <input name="poissa" class="form-control" value="{{attributes.poissa}}"  type="text">
     </div>
     <div class="form-group">

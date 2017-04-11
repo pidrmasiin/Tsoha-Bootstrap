@@ -27,16 +27,8 @@ class TulosController extends BaseController {
             'tyhja' => $params['tyhja'],
             'poissa' => $params['poissa']
         );
-        $array = array_values($attribuutit);
-        $errors = array();
         $tulos = New Tulos($attribuutit);
-
-        for ($i = 0; $i < count($array); ++$i) {
-            $joku = $array[$i];
-            if ($joku == '' || $joku == null) {
-                array_push($errors, $joku);
-            }
-        }
+        $errors = TulosController::virheet($attribuutit);
         $joku = $attribuutit['kysymys_id'];
         if (count($errors) == 0) {
             // Peli on validi, hyvä homma!
@@ -45,8 +37,9 @@ class TulosController extends BaseController {
             Redirect::to('/kysymykset/' . $joku);
         } else {
             // Pelissä oli jotain vikaa :(
-
-            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
+//
+//            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
+            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors, 'attributes' => $attribuutit));
         }
     }
 
@@ -86,47 +79,40 @@ class TulosController extends BaseController {
             'tyhja' => $params['tyhja'],
             'poissa' => $params['poissa']
         );
-        $array = array_values($attribuutit);
-        $errors = array();
-        
         $tulos = New Tulos($attribuutit);
+        $errors = TulosController::virheet($attribuutit);
 
-        for ($i = 0; $i < count($array); ++$i) {
-            $joku = $array[$i];
-            if ($joku == '' || $joku == null) {
-                array_push($errors, $joku);
-            }
-        }
-        if(!is_numeric($params['kysymys_id']) || !is_numeric($params['puolue_id']) || !is_numeric($params['jaa']) || !is_numeric($params['ei']) || !is_numeric($params['tyhja']) || !is_numeric($params['poissa'])){
-            array_push($errors, $joku);
-        }
-      
-        if($params['tulos']!= 'jaa' && $params['tulos']!= 'ei' && $params['tulos']!= 'eos'){
-            array_push($errors, $joku);
-        }
-        
-        $joku = $attribuutit['kysymys_id'];
-        $jaa = $params['jaa'];
         if (count($errors) == 0) {
             // Peli on validi, hyvä homma!
             $tulos->paivita($id);
 
-            Redirect::to('/kysymykset/' . $joku);
+            Redirect::to('/kysymykset/' . $params['kysymys_id']);
         } else {
             // Pelissä oli jotain vikaa :(
 
-            View::make('tulokset/muokkaaTulosta.html', array('attributes' => $tulos, 'errors' => $errors, 'kysymys' => $joku));
+            Redirect::to('/muokkaaVastausta/' . $id, array('errors' => $errors));
+//                    ,'tilsu' == $tulos, 'jaa' == $jaa, 'ei' == $ei, 'poissa' == $poissa);
         }
     }
 
-    public static function tulos($tulos) {
-        if ($tulos == 'jaa' || $tulos == 'ei' || $tulos == 'eos') {
-            return $tulos;
-        } else {
-            return null;
-        }
-    }
+    public static function virheet($attribuutit) {
+        $errors = array();
 
-    
+        if (!is_numeric($attribuutit['kysymys_id'])) {
+            array_push($errors, $attribuutit['kysymys_id']);
+        }if (!is_numeric($attribuutit['puolue_id'])) {
+            array_push($errors, $attribuutit['puolue_id']);
+        }if (!is_numeric($attribuutit['jaa'])) {
+            array_push($errors, $attribuutit['jaa']);
+        }if (!is_numeric($attribuutit['ei'])) {
+            array_push($errors, $attribuutit['ei']);
+        }if (!is_numeric($attribuutit['tyhja'])) {
+            array_push($errors, $attribuutit['tyhja']);
+        }if (!is_numeric($attribuutit['poissa'])) {
+            array_push($errors, $attribuutit['poissa']);
+        } if ($attribuutit['tulos'] != 'jaa' && $attribuutit['tulos'] != 'ei' && $attribuutit['tulos'] != 'eos') {
+            array_push($errors, $attribuutit['tulos']);
+        }return $errors;
+    }
 
 }

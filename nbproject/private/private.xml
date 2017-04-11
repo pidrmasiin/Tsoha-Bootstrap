@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/kysymys/ilmoitus.html</file>
             <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/controllers/tulos_controller.php</file>
-            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/sql/create_tables.sql</file>
-            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/tulokset/muokkaaTulosta.html</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/kysymys.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/tulos.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/controllers/kysymys_controller.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/config/routes.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/kysymys/uusiKysymys.html</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/kysymys/kysymykset.html</file>
         </group>
     </open-files>
 </project-private>

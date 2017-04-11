@@ -72,6 +72,12 @@ class Kysymys extends BaseModel {
 
         return null;
     }
+    
+    public function poista($id) {
+        $query = DB::connection()->prepare('DELETE FROM Kysymys WHERE id ='. $id);
+        $query->execute();
+        
+    }
 
   
     
