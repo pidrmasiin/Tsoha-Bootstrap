@@ -18,6 +18,7 @@ class BaseModel {
 
     public function errors($jotain) {
         // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+
         $errors = array();
 
         foreach ($this->validators as $validator) {

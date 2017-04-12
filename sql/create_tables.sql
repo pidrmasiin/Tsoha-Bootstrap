@@ -28,6 +28,19 @@ CREATE TABLE Vastaus(
     vastaus varchar(10) NOT NULL
 );
 
+CREATE TABLE Vastaukset(
+    id SERIAL PRIMARY KEY,
+    nimi varchar(10) NOT NULL,
+    keskusta INTEGER,
+    sdp INTEGER,
+    kokoomus INTEGER,
+    rkp INTEGER,
+    persut INTEGER,
+    vihreat INTEGER,
+    kd INTEGER,
+    vasemmisto INTEGER
+);
+
 CREATE TABLE Kayttaja(
     id SERIAL PRIMARY KEY,
     nimi varchar(10) NOT NULL,

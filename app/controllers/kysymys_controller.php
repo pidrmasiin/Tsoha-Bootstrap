@@ -34,14 +34,19 @@ class KysymysController extends BaseController {
         );
         $kysymys = New Kysymys($attribuutit);
         $errors = array();
-        if (!is_string($params['kysymys'])){
-            array_push($errors, $params['kysymys']);
+        if (strlen($params['kysymys']) < 6){
+            array_push($errors,'kysymys');
         }if (!is_numeric($params['istunto'])){
-            array_push($errors, $params['istunto']);
-//        }if (count($params['paivamaara']) != 10){
-//            array_push($errors, $params['paivamaara']);
-        }if (!is_string($params['linkki'])){
-            array_push($errors, $params['linkki']);
+            array_push($errors, 'istunto');
+        }
+        $viiva = '-';
+        $viiva1 = substr($params['paivamaara'], -8, 1);
+        $viiva2 = substr($params['paivamaara'], -5, 1);
+        if (strlen($params['paivamaara']) != 10 || !is_numeric(substr($params['paivamaara'], 0, 2))
+                || strcmp($viiva1, $viiva) !== 0 || !is_numeric(substr($params['paivamaara'], 3, 2)) || strcmp($viiva2, $viiva) !== 0 || !is_numeric(substr($params['paivamaara'], 6, 4))){
+            array_push($errors, 'paivamaara');
+        }if (strlen($params['linkki']) < 6){
+            array_push($errors, 'linkki');
         }
            
          if (count($errors) == 0){   

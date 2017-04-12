@@ -39,13 +39,15 @@ class TulosController extends BaseController {
             // Pelissä oli jotain vikaa :(
 //
 //            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
-            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors, 'attributes' => $attribuutit));
+            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors), array('attributes' => $attribuutit));
         }
     }
 
     public static function naytaTulokset($id) {
         $kysymys = Kysymys::find($id);
+        if(Tulos::all() !== NULL){
         $tulokset = Tulos::all();
+        }
         View::make('tulokset/tulosPuolueittain.html', array('tulokset' => $tulokset, 'kysymys' => $kysymys));
     }
 
@@ -99,19 +101,19 @@ class TulosController extends BaseController {
         $errors = array();
 
         if (!is_numeric($attribuutit['kysymys_id'])) {
-            array_push($errors, $attribuutit['kysymys_id']);
+            array_push($errors, 'kysymys_id');
         }if (!is_numeric($attribuutit['puolue_id'])) {
-            array_push($errors, $attribuutit['puolue_id']);
+            array_push($errors, 'puolue_id');
         }if (!is_numeric($attribuutit['jaa'])) {
-            array_push($errors, $attribuutit['jaa']);
+            array_push($errors, 'jaa');
         }if (!is_numeric($attribuutit['ei'])) {
-            array_push($errors, $attribuutit['ei']);
+            array_push($errors, 'ei');
         }if (!is_numeric($attribuutit['tyhja'])) {
-            array_push($errors, $attribuutit['tyhja']);
+            array_push($errors, 'tyhja');
         }if (!is_numeric($attribuutit['poissa'])) {
-            array_push($errors, $attribuutit['poissa']);
+            array_push($errors, 'poissa');
         } if ($attribuutit['tulos'] != 'jaa' && $attribuutit['tulos'] != 'ei' && $attribuutit['tulos'] != 'eos') {
-            array_push($errors, $attribuutit['tulos']);
+            array_push($errors, 'tulos');
         }return $errors;
     }
 

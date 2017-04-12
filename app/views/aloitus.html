@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Kysymys</h1>
-<h4> WAT</h4>
+
+<h1>Tervetuloa vaalikoneeseen</h1>
+<h4>Kerro ensin nimesi</h4>
 
 
-<button class="btn btn-success">Kyllä</button>
-<button class="btn btn-primary">EOS</button>
-<button class="btn btn-danger">EI</button>
+<form method="post" action="{{base_path}}/vastaus">
+    <div class="form-group">
+        <label>Nimi</label>
+        <input name="nimi" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Aloita</button>
+    </div>
+</form>
 {% endblock %}

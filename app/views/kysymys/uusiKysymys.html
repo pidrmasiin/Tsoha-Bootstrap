@@ -5,13 +5,13 @@
 
 {% if errors %}
 {% for error in errors %}
-{{forms.virhe_ilmoitus("#{error.value}")}} 
+{{forms.virhe_ilmoitus("#{error}")}} 
 {% endfor %}
 {% endif %}
 
 <form method="post" action="{{base_path}}/lisaaKysymys">
     <div class="form-group">
-        <label>Kysymys</label>
+        <label>Kysymys (yli 6 merkkiä)</label>
         <input name="kysymys" class="form-control" value="{{attribuutit.kysymys}}" type="text">
     </div>
     <div class="form-group">
@@ -23,7 +23,7 @@
         <input name="paivamaara" class="form-control" value="{{attribuutit.paivamaara}}" type="text">
     </div>
     <div class="form-group">
-        <label>Linkki äänestystulokseen</label>
+        <label>Linkki äänestystulokseen (yli 6 merkkiä) </label>
         <input name="linkki" class="form-control" value="{{attribuutit.linkki}}" type="text">
     </div>
     <div class="form-group">

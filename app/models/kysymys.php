@@ -39,6 +39,23 @@ class Kysymys extends BaseModel {
 
         return $kysymykset;
     }
+    
+    public static function kaikkiIdt() {
+        // Alustetaan kysely tietokantayhteydellämme
+        $query = DB::connection()->prepare('SELECT * FROM Kysymys');
+        // Suoritetaan kysely
+        $query->execute();
+        // Haetaan kyselyn tuottamat rivit
+        $rows = $query->fetchAll();
+        $idt = array();
+
+        // Käydään kyselyn tuottamat rivit läpi
+        foreach ($rows as $row) {
+            array_push($idt, $row['id']);
+        }
+
+        return $idt;
+    }
 
     public function save() {
         // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon

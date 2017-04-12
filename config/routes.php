@@ -83,4 +83,14 @@ $routes->post('/paivita/:id', function($id) {
     TulosController::paivita($id);
 });
 
+//VastausController:: ALLA
+
+$routes->post('/vastaus', function() {
+    VastausController::nimi();
+});
+
+$routes->get('/vastaus/:id', function($id) {
+    VastausController::naytaKysymys($id);
+});
+
 
