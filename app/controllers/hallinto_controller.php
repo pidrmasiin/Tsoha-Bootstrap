@@ -5,9 +5,8 @@ class HallintoController extends BaseController {
     public static function index() {
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
 //   	  echo 'Tämä on etusivu!';
-  
+
         View::make('aloitus.html');
-        
     }
 
     public static function esittely() {
@@ -35,8 +34,13 @@ class HallintoController extends BaseController {
         } else {
             $_SESSION['user'] = $user->id;
 
-            Redirect::to('/hallinto', array('message' => 'Tervetuloa takaisin ' . $user->nimi . '!'));
+            Redirect::to('/kysymykset', array('message' => 'Tervetuloa ' . $user->nimi . '!'));
         }
+    }
+
+    public static function logout() {
+        $_SESSION['user'] = null;
+        Redirect::to('', array('message' => 'Olet kirjautunut ulos!'));
     }
 
 //    public static function sandbox() {

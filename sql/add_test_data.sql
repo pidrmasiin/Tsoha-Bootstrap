@@ -1,14 +1,14 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
 INSERT INTO Puolue (nimi) 
 VALUES 
-    ('Keskusta'),
-    ('SDP'), 
-    ('Kookomus'), 
-    ('RKP'),
-    ('Persut'), 
-    ('Vihreät'),
-    ('KD'),
-    ('Vasemmisto');
+    ('keskusta'),
+    ('sdp'), 
+    ('kokoomus'), 
+    ('rkp'),
+    ('persut'), 
+    ('vihreat'),
+    ('kd'),
+    ('vasemmisto');
 
 
 INSERT INTO Kysymys (kysymys, istunto, paivamaara, linkki) 

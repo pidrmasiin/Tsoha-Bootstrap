@@ -66,6 +66,21 @@ class Tulos extends BaseModel {
         return null;
     }
     
+    public static function kaikkiKysymyksenPuolueet($kysymys_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
+        $query->execute(array('kysymys_id' => $kysymys_id));
+        $rows = $query->fetchAll();
+        $idt = array();
+
+        foreach ($rows as $row) {
+            array_push($idt, $row['puolue_id']);
+        }
+
+        return $idt;
+    }
+    
+    
+    
     public static function findByKysymys($kysymys_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
         $query->execute(array('kysymys_id' => $kysymys_id));

@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
+<h3> Hei {{nimi}}, mitä mieltä?</h3>
 
-<h1>{{kysymys.kysymys}}</h1>
-
-
-
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Kysymys</th>
+            <th>Jaa</th>
+            <th>Tyhjä/Poissa</th>
+            <th>Ei</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for kysymys in kysymykset %}
+        <tr>
+            <td>{{kysymys.kysymys}}</td>
+            <td><a class="btn btn-success" href="{{base_path}}/vastaus/{{kysymys.id}}/jaa/{{nimi.id}}">Jaa</a></td>
+            <td><a class="btn btn-primary" href="{{base_path}}/kysymykset/{{kysymys.id}}/eos/{{nimi.id}}">En osaa sanoa</a></td>
+            <td><a class="btn btn-danger" href="{{base_path}}/poistaKysymys/{{kysymys.id}}/ei/{{nimi.id}}">Ei</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

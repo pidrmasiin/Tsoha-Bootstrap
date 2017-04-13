@@ -12,5 +12,35 @@ and open the template in the editor.
 </div>
 {% endmacro %}
 
+{% macro puolue(text) %}
+{% if text == 1 %}
+<td>Keskusta</td>
+{% elseif text == 2 %}
+<ul>
+    <li>Keskusta</li>
+</ul>
+{% elseif text == 3 %}
+<ul>
+    <li>Keskusta</li>
+</ul>
+{% elseif text == 4 %}
+<ul>
+    <li>Keskusta</li>
+</ul>
+{% elseif text == 5 %}
+<ul>
+    <li>Keskusta</li>
+</ul>
+{% elseif text == 6 %}
+<ul>
+    <li>Keskusta</li>
+</ul> 
+{% elseif text == 7 %}
+<ul>
+    <li>Keskusta</li>
+</ul> 
+{% endif %}
+{% endmacro %}
+
 
 

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if message is not empty %}
+<div class="alert alert-success">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
 <h1>Tervetuloa vaalikoneeseen</h1>
 <h4>Kerro ensin nimesi</h4>
 

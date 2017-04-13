@@ -6,7 +6,7 @@
 
 {% if errors %}
 {% for error in errors %}
-{{forms.virhe_ilmoitus("#{error}")}} 
+{{forms.virhe_ilmoitus('#{error}')}} 
 {% endfor %}
 {% endif %}
 
@@ -14,16 +14,10 @@
 <form method="post" action="{{base_path}}/paivita/{{tulos.id}}">
 
     <div class="form-group">
-
-
-        <label> puolue id (numero)
-        </label>
-
-        <input name="puolue_id" class="form-control" value="{{tulos.puolue_id}}" type="text">
+        <input name="puolue_id" class="form-control" value="{{tulos.puolue_id}}" type="hidden">
     </div>
     <div class="form-group">
-        <label>kysymys id (numero) </label>
-        <input name="kysymys_id" class="form-control" value="{{tulos.kysymys_id}}"  type="text">
+        <input name="kysymys_id" class="form-control" value="{{tulos.kysymys_id}}"  type="hidden">
     </div>
     <div class="form-group">
         <label>tulos (jaa/ei/eos)</label>

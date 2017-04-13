@@ -1,5 +1,11 @@
 <?php
 
+function check_logged_in() {
+    BaseController::check_logged_in();
+}
+
+//HallintoController ALLA
+
 $routes->get('/', function() {
     HallintoController::index();
 });
@@ -26,43 +32,47 @@ $routes->post('/login', function() {
     HallintoController::handle_login();
 });
 
+$routes->post('/logout', function() {
+    HallintoController::logout();
+});
+
 //KysymysController:: ALLA
 
-$routes->get('/lisaaKysymys', function() {
+$routes->get('/lisaaKysymys', 'check_logged_in', function() {
     KysymysController::lisaaKysymys();
 });
 
-$routes->post('/lisaaKysymys', function() {
+$routes->post('/lisaaKysymys', 'check_logged_in', function() {
     KysymysController::lisatty();
 });
 
-$routes->get('/lisaaKysymys/lisatty', function() {
+$routes->get('/lisaaKysymys/lisatty', 'check_logged_in', function() {
     KysymysController::ilmoitus();
 });
 
-$routes->get('/kysymykset', function() {
+$routes->get('/kysymykset', 'check_logged_in', function() {
     KysymysController::naytaKysymykset();
 });
 
-$routes->get('/poistaKysymys/:id', function($id) {
+$routes->get('/poistaKysymys/:id', 'check_logged_in', function($id) {
     KysymysController::varmistus($id);
 });
 
-$routes->post('/poistaKysymys/:id/poista', function($id) {
+$routes->post('/poistaKysymys/:id/poista', 'check_logged_in', function($id) {
     KysymysController::poista($id);
 });
 
 //TulosController:: ALLA
 
-$routes->get('/kysymykset/:id', function($id) {
+$routes->get('/kysymykset/:id', 'check_logged_in', function($id) {
     TulosController::naytaTulokset($id);
 });
 
-$routes->get('/lisaaVastaus/:id', function($id) {
+$routes->get('/lisaaVastaus/:id', 'check_logged_in', function($id) {
     TulosController::lisaaTulos($id);
 });
 
-$routes->post('/lisaaVastaus', function() {
+$routes->post('/lisaaVastaus', 'check_logged_in', function() {
     TulosController::lisatty();
 });
 
@@ -89,8 +99,22 @@ $routes->post('/vastaus', function() {
     VastausController::nimi();
 });
 
-$routes->get('/vastaus/:id', function($id) {
-    VastausController::naytaKysymys($id);
+$routes->get('/vastaukset/kysymykset', function() {
+    VastausController::naytaKysymykset();
 });
+
+$routes->post('/vastaus/:kysymys/jaa/:nimi', function($kysymys, $nimi) {
+    VastausController::jaa($kysymys, $nimi);
+});
+
+$routes->post('/vastaus/:kysymys/eos/:nimi', function($kysymys, $nimi) {
+    VastausController::eos($kysymys, $nimi);
+});
+
+$routes->post('/vastaus/:kysymys/ei/:nimi', function($kysymys, $nimi) {
+    VastausController::ei($kysymys, $nimi);
+});
+
+
 
 

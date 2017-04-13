@@ -28,7 +28,18 @@ class TulosController extends BaseController {
             'poissa' => $params['poissa']
         );
         $tulos = New Tulos($attribuutit);
+
         $errors = TulosController::virheet($attribuutit);
+
+        $puolueet = $tulos->kaikkiKysymyksenPuolueet($attribuutit['kysymys_id']);
+        if ($puolueet != NULL) {
+            for ($i = 0; $i < count($puolueet); ++$i) {
+                if ($puolueet[$i] ==  $attribuutit['puolue_id']) {
+                    array_push($errors, 'kysymys_id');
+                }
+            }
+        }
+
         $joku = $attribuutit['kysymys_id'];
         if (count($errors) == 0) {
             // Peli on validi, hyvä homma!
@@ -39,14 +50,14 @@ class TulosController extends BaseController {
             // Pelissä oli jotain vikaa :(
 //
 //            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
-            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors), array('attributes' => $attribuutit));
+            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors, 'attributes' => $attribuutit));
         }
     }
 
     public static function naytaTulokset($id) {
         $kysymys = Kysymys::find($id);
-        if(Tulos::all() !== NULL){
-        $tulokset = Tulos::all();
+        if (Tulos::all() !== NULL) {
+            $tulokset = Tulos::all();
         }
         View::make('tulokset/tulosPuolueittain.html', array('tulokset' => $tulokset, 'kysymys' => $kysymys));
     }
@@ -82,6 +93,7 @@ class TulosController extends BaseController {
             'poissa' => $params['poissa']
         );
         $tulos = New Tulos($attribuutit);
+
         $errors = TulosController::virheet($attribuutit);
 
         if (count($errors) == 0) {
@@ -92,14 +104,13 @@ class TulosController extends BaseController {
         } else {
             // Pelissä oli jotain vikaa :(
 
-            Redirect::to('/muokkaaVastausta/' . $id, array('errors' => $errors));
+            Redirect::to('/muokkaaVastausta/' . $id, array('errors' => $errors, 'attributes' => $attribuutit));
 //                    ,'tilsu' == $tulos, 'jaa' == $jaa, 'ei' == $ei, 'poissa' == $poissa);
         }
     }
 
     public static function virheet($attribuutit) {
         $errors = array();
-
         if (!is_numeric($attribuutit['kysymys_id'])) {
             array_push($errors, 'kysymys_id');
         }if (!is_numeric($attribuutit['puolue_id'])) {

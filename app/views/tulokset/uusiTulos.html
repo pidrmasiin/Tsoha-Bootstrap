@@ -11,12 +11,11 @@
 
 <form method="post" action="{{base_path}}/lisaaVastaus">
     <div class="form-group">
-        <label>puolue (numero)</label>
+        <label>puolue (numeroarvo/puolue voi vastata kysymykseen vain kerran)</label>
         <input name="puolue_id" class="form-control" value="{{attributes.puolue_id}}" type="text">
     </div>
     <div class="form-group">
-        <label>kysymys (numero)</label>
-        <input name="kysymys_id" class="form-control" value="{{kysymys.id}}"  type="text">
+        <input name="kysymys_id" class="form-control" value="{{kysymys.id}}"  type="hidden">
     </div>
     <div class="form-group">
         <label>tulos (jaa/ei/eos)</label>

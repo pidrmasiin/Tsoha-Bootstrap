@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    
-<p>{{message}}</p>
+{% if message is not empty %}
+<div class="alert alert-danger">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
 <h1>Kirjaudu sisään</h1>
 
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->

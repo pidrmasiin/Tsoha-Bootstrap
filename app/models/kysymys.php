@@ -56,6 +56,8 @@ class Kysymys extends BaseModel {
 
         return $idt;
     }
+    
+    
 
     public function save() {
         // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon

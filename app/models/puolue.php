@@ -57,5 +57,23 @@ class Puolue extends BaseModel {
 
         return null;
     }
+    
+    public static function all() {
+        $query = DB::connection()->prepare('SELECT * FROM Puolue');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $tulokset = array();
+
+
+        foreach ($rows as $row) {
+
+            $tulokset[] = new Tulos(array(
+                'id' => $row['id'],
+                'nimi' => $row['nimi'],
+            ));
+        }
+
+        return $tulokset;
+    }
 
 }
