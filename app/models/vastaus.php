@@ -9,7 +9,7 @@
 class Vastaukset extends BaseModel {
 
 // Attribuutit
-    public $id, $nimi, $keskusta, $sdp, $kokoomus, $rkp, $persut, $vihreat, $kd, $vasemmisto;
+    public $id, $nimi, $kysymykset, $keskusta, $sdp, $kokoomus, $rkp, $persut, $vihreat, $kd, $vasemmisto;
 
 // Konstruktori
     public function __construct($attributes) {
@@ -23,9 +23,10 @@ class Vastaukset extends BaseModel {
         $row = $query->fetch();
 
         if ($row) {
-            $tulokset = new Tulos(array(
+            $tulokset = new Vastaukset(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
+                'kysymykset' => $row['kysymykset'],
                 'keskusta' => $row['keskusta'],
                 'sdp' => $row['sdp'],
                 'kokoomus' => $row['kokoomus'],
@@ -43,9 +44,9 @@ class Vastaukset extends BaseModel {
         return null;
     }
     
-    public function nimi($id) {
+    public function nimi($nimi) {
 // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-        $query = DB::connection()->prepare('INSERT INTO Vastaukset (nimi, keskusta) VALUES (:nimi, 0) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Vastaukset (nimi, kysymykset, keskusta, sdp, kokoomus, rkp, persut, vihreat, kd, vasemmisto) VALUES (:nimi, array[]::integer[], 0, 0, 0, 0, 0, 0, 0, 0) RETURNING id');
 // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
         $query->execute(array('nimi' => $this->nimi));
 //                , k => $this->keskusta, 0 => $this->sdp, 0 => $this->kokoomus, 0 => $this->rkp, 0 => $this->persut, 0 => $this->kd, 0 => $this->vasemmisto));
@@ -58,15 +59,33 @@ class Vastaukset extends BaseModel {
     }
     
     public function palautautaAanet($puolue) {
-        $query = DB::connection()->prepare('SELECT :puolue FROM Vastaukset');
-        $query->execute(array('nimi' => $this->nimi));
+        $query = DB::connection()->prepare('SELECT ' . $puolue .' FROM Vastaukset');
+        $query->execute();
         $row = $query->fetch();
 
-        $this->id = $row['id'];
+        if ($row) {
+            
+            return $this->$puolue;
+        }return null;
     }
     
     public function tyhjennaNimet() {
         $query = DB::connection()->prepare('DELETE FROM Vastaukset');
+        $query->execute();
+        
     }
+    
+    public function lisaaPuoleelleAani($puolue, $arvo) {
+        $query = DB::connection()->prepare("UPDATE Vastaukset SET " . $puolue ." = ". $arvo);
+        $query->execute();
+       
+    }
+    
+    public function lisaaKysymys($kysymys) {
+        $query = DB::connection()->prepare("UPDATE Vastaukset SET kysymykset =  array_replace(kysymykset, (CAST (". $kysymys ." AS integer)))");
+        $query->execute();
+       
+    }
+ 
 
 }

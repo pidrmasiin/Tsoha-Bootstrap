@@ -113,7 +113,7 @@ class TulosController extends BaseController {
         $errors = array();
         if (!is_numeric($attribuutit['kysymys_id'])) {
             array_push($errors, 'kysymys_id');
-        }if (!is_numeric($attribuutit['puolue_id'])) {
+        }if (!is_numeric($attribuutit['puolue_id']) || $attribuutit['puolue_id'] > 8) {
             array_push($errors, 'puolue_id');
         }if (!is_numeric($attribuutit['jaa'])) {
             array_push($errors, 'jaa');

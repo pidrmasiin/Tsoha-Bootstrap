@@ -99,11 +99,11 @@ $routes->post('/vastaus', function() {
     VastausController::nimi();
 });
 
-$routes->get('/vastaukset/kysymykset', function() {
-    VastausController::naytaKysymykset();
+$routes->get('/vastaukset/kysymykset/:id', function($id) {
+    VastausController::naytaKysymykset($id);
 });
 
-$routes->post('/vastaus/:kysymys/jaa/:nimi', function($kysymys, $nimi) {
+$routes->get('/vastaus/:kysymys/jaa/:nimi', function($kysymys, $nimi) {
     VastausController::jaa($kysymys, $nimi);
 });
 

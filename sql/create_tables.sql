@@ -8,7 +8,8 @@ CREATE TABLE Kysymys(
     kysymys varchar(200) NOT NULL,
     istunto INTEGER NOT NULL,
     paivamaara DATE,
-    linkki varchar(200) NOT NULL
+    linkki varchar(200) NOT NULL,
+    vastaaja INTEGER
 );
 
 CREATE TABLE Tulos(

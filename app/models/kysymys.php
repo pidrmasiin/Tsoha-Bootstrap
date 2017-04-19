@@ -40,6 +40,8 @@ class Kysymys extends BaseModel {
         return $kysymykset;
     }
     
+    
+    
     public static function kaikkiIdt() {
         // Alustetaan kysely tietokantayhteydellämme
         $query = DB::connection()->prepare('SELECT * FROM Kysymys');

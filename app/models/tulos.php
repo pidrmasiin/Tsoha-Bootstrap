@@ -65,7 +65,23 @@ class Tulos extends BaseModel {
 
         return null;
     }
-    
+
+    public static function findJaat($kysymys_id) {
+
+        $query = DB::connection()->prepare("SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id AND tulos ='jaa'");
+        $query->execute(array('kysymys_id' => $kysymys_id));
+        $rows = $query->fetchAll();
+        $puolueet = array();
+
+
+        foreach ($rows as $row) {
+
+            array_push($puolueet, $row['puolue_id']);
+        }
+
+        return $puolueet;
+    }
+
     public static function kaikkiKysymyksenPuolueet($kysymys_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
         $query->execute(array('kysymys_id' => $kysymys_id));
@@ -78,9 +94,7 @@ class Tulos extends BaseModel {
 
         return $idt;
     }
-    
-    
-    
+
     public static function findByKysymys($kysymys_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
         $query->execute(array('kysymys_id' => $kysymys_id));
@@ -103,7 +117,6 @@ class Tulos extends BaseModel {
         }
 
         return $tulokset;
-        
     }
 
     public function save() {
@@ -120,17 +133,14 @@ class Tulos extends BaseModel {
     }
 
     public function poista($tulosid) {
-        $query = DB::connection()->prepare('DELETE FROM Tulos WHERE id ='. $tulosid);
+        $query = DB::connection()->prepare('DELETE FROM Tulos WHERE id =' . $tulosid);
         $query->execute();
-        
     }
-    
-    
-    public function paivita($id){
-        
-        $query = DB::connection()->prepare('UPDATE Tulos SET puolue_id = :puolue_id, kysymys_id = :kysymys_id, tulos = :tulos, jaa = :jaa, ei = :ei, tyhja = :tyhja, poissa = :poissa WHERE id = '. $id);
+
+    public function paivita($id) {
+
+        $query = DB::connection()->prepare('UPDATE Tulos SET puolue_id = :puolue_id, kysymys_id = :kysymys_id, tulos = :tulos, jaa = :jaa, ei = :ei, tyhja = :tyhja, poissa = :poissa WHERE id = ' . $id);
         $query->execute(array('puolue_id' => $this->puolue_id, 'kysymys_id' => $this->kysymys_id, 'tulos' => $this->tulos, 'jaa' => $this->jaa, 'ei' => $this->ei, 'tyhja' => $this->tyhja, 'poissa' => $this->poissa));
     }
-    
 
 }
