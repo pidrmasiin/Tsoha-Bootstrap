@@ -19,10 +19,6 @@ INSERT INTO Tulos (puolue_id, kysymys_id, tulos, jaa, ei ,tyhja, poissa)
 VALUES 
     ((SELECT id FROM Puolue WHERE nimi='sdp'),(SELECT id FROM Kysymys WHERE istunto='11'),'ei','17','22','0','10');
 
-INSERT INTO Vastaus (kysymys_id, vastaus) 
-VALUES 
-    ((SELECT id FROM Kysymys WHERE istunto='11'), 'ei');
-
 INSERT INTO Kayttaja (nimi, salasana) 
 VALUES 
     ('nimi', 'salasana');

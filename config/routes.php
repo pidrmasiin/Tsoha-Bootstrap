@@ -107,12 +107,16 @@ $routes->get('/vastaus/:kysymys/jaa/:nimi', function($kysymys, $nimi) {
     VastausController::jaa($kysymys, $nimi);
 });
 
-$routes->post('/vastaus/:kysymys/eos/:nimi', function($kysymys, $nimi) {
+$routes->get('/vastaus/:kysymys/eos/:nimi', function($kysymys, $nimi) {
     VastausController::eos($kysymys, $nimi);
 });
 
-$routes->post('/vastaus/:kysymys/ei/:nimi', function($kysymys, $nimi) {
+$routes->get('/vastaus/:kysymys/ei/:nimi', function($kysymys, $nimi) {
     VastausController::ei($kysymys, $nimi);
+});
+
+$routes->get('/vastaukset/:nimi', function($nimi) {
+    VastausController::tulokset($nimi);
 });
 
 

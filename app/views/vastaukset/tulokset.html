@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Sopivimmat puolueet</h1>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Puolue</th>
+            <th>Monta kertaa samaa mieltä</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Keskusta</td>
+            <td>{{nimi.keskusta}}</td>
+        </tr>
+        <tr>
+            <td>Sdp</td>
+            <td>{{nimi.sdp}}</td>
+        </tr>
+        <tr>
+            <td>Kokoomus</td>
+            <td>{{nimi.kokoomus}}</td>
+        </tr>
+        <tr>
+            <td>Rkp</td>
+            <td>{{nimi.rkp}}</td>
+        </tr>
+        <tr>
+            <td>Persut</td>
+            <td>{{nimi.persut}}</td>
+        </tr>
+        <tr>
+            <td>Vihreät</td>
+            <td>{{nimi.vihreat}}</td>
+        </tr>
+        <tr>
+            <td>Kd</td>
+            <td>{{nimi.kd}}</td>
+        </tr>
+        <tr>
+            <td>Vasemmisto</td>
+            <td>{{nimi.vasemmisto}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+{% endblock %}
