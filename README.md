@@ -1,8 +1,7 @@
 # Tietokantasovelluksen esittelysivu
 
-# HUOM Vain alla olevassa sivu sietää väärien arvojen syöttämisen lomakkeeseen
+Tällä hetkellä vaalikonetta voi käyttää vain yksi kerrallaan eikä monesta moneen linkityksiä vielä ole. Kehittelen ensi viikolla näitä kuntoon.
 
-* [Linkki lähes toimivaan lomakkeeseen](http://pepa.users.cs.helsinki.fi/vaalikoneisto/muokkaaVastausta/1)
 
 Yleisiä linkkejä:
 
@@ -10,14 +9,10 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://pepa.users.cs.helsinki.fi/vaalikoneisto)
 * [Linkki dokumentaatiooni](https://github.com/pidrmasiin/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
-## Linkit sivuille
 
-### Linkit kysymysten hallinnointiin
+* [Linkki kirjautumiseen, josta pääsee lomakkeisiin yms.](http://pepa.users.cs.helsinki.fi/vaalikoneisto/hallinto)
 
-* [Linkki kaikkiin kysymyksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/kysymykset)
-* [Linkki kaikkiin kysymyksiin](http://pepa.users.cs.helsinki.fi/vaalikoneisto/hallinto)
-
-Käyttäjätunnut: nimi
+Käyttäjätunnus: nimi
 Salasana: salasana
 
 ### Muut linkit
