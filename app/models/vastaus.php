@@ -26,6 +26,7 @@ class Vastaukset extends BaseModel {
             $tulokset = new Vastaukset(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
+                'kysymyḱset' => $row['kysymykset'],
                 'keskusta' => $row['keskusta'],
                 'sdp' => $row['sdp'],
                 'kokoomus' => $row['kokoomus'],

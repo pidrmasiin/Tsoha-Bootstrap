@@ -77,19 +77,19 @@ $routes->post('/lisaaVastaus', 'check_logged_in', function() {
 });
 
 
-$routes->get('/poistaTulos/:tulosid', function($tulosid) {
+$routes->get('/poistaTulos/:tulosid', 'check_logged_in', function($tulosid) {
     TulosController::ilmoitus($tulosid);
 });
 
-$routes->post('/poistaTulos/:tulosid/poista', function($tulosid) {
+$routes->post('/poistaTulos/:tulosid/poista', 'check_logged_in',  function($tulosid) {
     TulosController::poista($tulosid);
 });
 
-$routes->get('/muokkaaVastausta/:id', function($id) {
+$routes->get('/muokkaaVastausta/:id', 'check_logged_in', function($id) {
     TulosController::muokkaa($id);
 });
 
-$routes->post('/paivita/:id', function($id) {
+$routes->post('/paivita/:id', 'check_logged_in', function($id) {
     TulosController::paivita($id);
 });
 

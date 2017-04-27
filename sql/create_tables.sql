@@ -31,8 +31,18 @@ CREATE TABLE Kayttaja(
     salasana varchar(10) 
 );
 
+CREATE TABLE Kysymykset(
+    id SERIAL PRIMARY KEY,
+    yksi INTEGER REFERENCES Kysymys(id),
+    kaksi INTEGER REFERENCES Kysymys(id),
+    kolme INTEGER REFERENCES Kysymys(id),
+    nelja INTEGER REFERENCES Kysymys(id),
+    viisi INTEGER REFERENCES Kysymys(id)
+);
+
 CREATE TABLE Vastaukset(
     id SERIAL PRIMARY KEY,
+    kysymykset INTEGER REFERENCES Kysymykset(id),
     nimi varchar(10) NOT NULL,
     keskusta INTEGER,
     sdp INTEGER,
@@ -43,6 +53,8 @@ CREATE TABLE Vastaukset(
     kd INTEGER,
     vasemmisto INTEGER
 );
+
+
 
 
     

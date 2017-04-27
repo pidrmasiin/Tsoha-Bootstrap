@@ -28,14 +28,14 @@ class TulosController extends BaseController {
             'poissa' => $params['poissa']
         );
         $tulos = New Tulos($attribuutit);
-
-        $errors = TulosController::virheet($attribuutit);
+        $kysymys = Kysymys::find($params['kysymys_id']);
+        $errors = TulosController::virheet($params);
 
         $puolueet = $tulos->kaikkiKysymyksenPuolueet($attribuutit['kysymys_id']);
         if ($puolueet != NULL) {
             for ($i = 0; $i < count($puolueet); ++$i) {
                 if ($puolueet[$i] ==  $attribuutit['puolue_id']) {
-                    array_push($errors, 'kysymys_id');
+                    array_push($errors, 'puolue_id');
                 }
             }
         }
@@ -47,10 +47,8 @@ class TulosController extends BaseController {
 
             Redirect::to('/kysymykset/' . $joku);
         } else {
-            // Pelissä oli jotain vikaa :(
-//
-//            View::make('tulokset/uusiTulos.html', array('attributes' => $attribuutit, 'errors' => $errors, 'kysymys' => $joku));
-            Redirect::to('/lisaaVastaus/' . $joku, array('errors' => $errors, 'attributes' => $attribuutit));
+//            View::make('tulokset/uusiTulos.html', array('kysymys' => $kysymys, 'errors' => $errors, 'attributes' => $attribuutit));
+            Redirect::to('/lisaaVastaus/' . $joku, array('kysymys' => $kysymys, 'errors' => $errors, 'attributes' => $attribuutit));
         }
     }
 
@@ -81,6 +79,7 @@ class TulosController extends BaseController {
     }
 
     public static function paivita($id) {
+        $vanhatulos = Tulos::find($id);
         $params = $_POST;
 
         $attribuutit = array(
@@ -94,7 +93,7 @@ class TulosController extends BaseController {
         );
         $tulos = New Tulos($attribuutit);
 
-        $errors = TulosController::virheet($attribuutit);
+        $errors = TulosController::virheet($params);
 
         if (count($errors) == 0) {
             // Peli on validi, hyvä homma!
@@ -103,8 +102,8 @@ class TulosController extends BaseController {
             Redirect::to('/kysymykset/' . $params['kysymys_id']);
         } else {
             // Pelissä oli jotain vikaa :(
-
-            Redirect::to('/muokkaaVastausta/' . $id, array('errors' => $errors, 'attributes' => $attribuutit));
+            
+            View::make('tulokset/muokkaaTulosta.html', array('tulos' => $vanhatulos, 'errors' => $errors));
 //                    ,'tilsu' == $tulos, 'jaa' == $jaa, 'ei' == $ei, 'poissa' == $poissa);
         }
     }
