@@ -58,6 +58,8 @@ class Puolue extends BaseModel {
         return null;
     }
     
+    
+    
  
 
 }

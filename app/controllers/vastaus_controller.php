@@ -14,12 +14,21 @@ class VastausController extends BaseController {
             'nimi' => $params['nimi'],
         );
         $vastaukset = New Vastaukset($attribuutit);
-        $vastaukset->tyhjennaNimet();
-        $kysymys = Kysymys::poistaKaikkiVastaajat();
+//        $vastaukset->tyhjennaNimet();
+
         $kysymykset = Kysymys::kaikkiIdt();
+        Liitos::poista();
         $vastaukset->nimi($params['nimi']);
-//        $vastaukset->lisaaKysymys(1);
-//        Kint::dump($vastaukset);
+        foreach ($kysymykset as $id) {
+            $liitokseen = array(
+                'kysymys_id' => $id,
+                'vastaukset_id' => $vastaukset->id,
+                'vastattu' => 0
+            );
+            $liitos = New Liitos($liitokseen);
+            $liitos->save();
+        }
+
         Redirect::to('/vastaukset/kysymykset/' . $vastaukset->id);
     }
 
@@ -32,22 +41,25 @@ class VastausController extends BaseController {
 //        Kint::dump($vastaaja);
         View::make('/vastaukset/vastaus.html', array('nimi' => $vastaaja, 'kysymykset' => $kysymykset));
     }
-    
+
     public static function jaa($kysymys_id, $nimi) {
         $vastaukset = Tulos::findJaat($kysymys_id);
         $vastaa = New VastausController();
         $vastaa->vastaus($kysymys_id, $nimi, $vastaukset);
     }
+
     public static function ei($kysymys_id, $nimi) {
         $vastaukset = Tulos::findEit($kysymys_id);
         $vastaa = New VastausController();
         $vastaa->vastaus($kysymys_id, $nimi, $vastaukset);
     }
+
     public static function eos($kysymys_id, $nimi) {
         $vastaukset = Tulos::findEost($kysymys_id);
         $vastaa = New VastausController();
         $vastaa->vastaus($kysymys_id, $nimi, $vastaukset);
     }
+
     public static function vastaus($kysymys_id, $nimi, $vastaukset) {
         $vastaaja = Vastaukset::find($nimi);
         for ($i = 0; $i < count($vastaukset); ++$i) {
@@ -56,18 +68,29 @@ class VastausController extends BaseController {
             $vastaaja->lisaaPuoleelleAani($puolue->nimi, $aanet);
         }
         $kysymys = Kysymys::find($kysymys_id);
-        $kysymys->lisaaVastaaja($kysymys_id);
-        $kysymykset = Kysymys::all();
+        $liitos = Liitos::vastattu($kysymys_id, $nimi);
+        $kysymykset = Kysymys::kaikkiVastaamattomat();
         Redirect::to('/vastaukset/kysymykset/' . $vastaaja->id, array('kysymykset' => $kysymykset));
     }
-    
+
     public static function tulokset($nimi) {
         $vastaukset = Vastaukset::find($nimi);
-        
+
 //        Kint::dump($puolueet);
-        View::make('/vastaukset/tulokset.html', array('nimi'=>$vastaukset));
+        View::make('/vastaukset/tulokset.html', array('nimi' => $vastaukset));
     }
+
+    public static function puolueenVastaukset($puolue, $nimi) {
+        $puolueint = (int) $puolue;
+//        Kint::dump($puolueint);
+        $vastaukset = Tulos::allPuolue($puolueint);
+        $puolueenNimi = Puolue::find($puolue)->nimi;
+
+        View::make('/vastaukset/ilmoitus.html', array('vastaukset' => $vastaukset, 'puolue' => $puolueenNimi));
+    }
+
 }
+
 //
 //    public static function jaa($kysymys_id, $nimi) {
 //

@@ -7,12 +7,13 @@ CREATE TABLE Puolue(
 
 CREATE TABLE Kysymys(
     id SERIAL PRIMARY KEY,
-    kysymys varchar(200) NOT NULL,
+    kysymys varchar NOT NULL,
     istunto INTEGER NOT NULL,
     paivamaara DATE,
-    linkki varchar(200) NOT NULL,
-    vastaaja BOOLEAN
+    linkki varchar NOT NULL
 );
+
+
 
 CREATE TABLE Tulos(
     id SERIAL PRIMARY KEY, 
@@ -31,15 +32,6 @@ CREATE TABLE Kayttaja(
     salasana varchar(10) 
 );
 
-CREATE TABLE Kysymykset(
-    id SERIAL PRIMARY KEY,
-    yksi INTEGER REFERENCES Kysymys(id),
-    kaksi INTEGER REFERENCES Kysymys(id),
-    kolme INTEGER REFERENCES Kysymys(id),
-    nelja INTEGER REFERENCES Kysymys(id),
-    viisi INTEGER REFERENCES Kysymys(id)
-);
-
 CREATE TABLE Vastaukset(
     id SERIAL PRIMARY KEY,
     kysymykset INTEGER REFERENCES Kysymykset(id),
@@ -54,7 +46,11 @@ CREATE TABLE Vastaukset(
     vasemmisto INTEGER
 );
 
-
+CREATE TABLE Liitos(
+    kysymys_id INTEGER REFERENCES Kysymys(id),
+    vastaukset_id INTEGER REFERENCES Vastaukset(id),
+    vastattu BOOLEAN 
+);
 
 
     

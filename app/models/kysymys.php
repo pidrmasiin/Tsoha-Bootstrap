@@ -9,7 +9,7 @@
 class Kysymys extends BaseModel {
 
     // Attribuutit
-    public $id, $kysymys, $istunto, $paivamaara, $linkki, $vastaaja;
+    public $id, $kysymys, $istunto, $paivamaara, $linkki;
 
     // Konstruktori
     public function __construct($attributes) {
@@ -33,8 +33,7 @@ class Kysymys extends BaseModel {
                 'kysymys' => $row['kysymys'],
                 'istunto' => $row['istunto'],
                 'paivamaara' => $row['paivamaara'],
-                'linkki' => $row['linkki'],
-                'vastaaja' => $row['vastaaja']
+                'linkki' => $row['linkki']
             ));
         }
 
@@ -60,7 +59,7 @@ class Kysymys extends BaseModel {
 
     public function save() {
         // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
-        $query = DB::connection()->prepare('INSERT INTO Kysymys (kysymys, istunto, paivamaara, linkki, vastaaja) VALUES (:kysymys, :istunto, :paivamaara, :linkki, FALSE) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Kysymys (kysymys, istunto, paivamaara, linkki) VALUES (:kysymys, :istunto, :paivamaara, :linkki) RETURNING id');
         // Muistathan, että olion attribuuttiin pääse syntaksilla $this->attribuutin_nimi
         $query->execute(array('kysymys' => $this->kysymys, 'istunto' => $this->istunto, 'paivamaara' => $this->paivamaara, 'linkki' => $this->linkki));
         // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
@@ -82,8 +81,7 @@ class Kysymys extends BaseModel {
                 'kysymys' => $row['kysymys'],
                 'istunto' => $row['istunto'],
                 'paivamaara' => $row['paivamaara'],
-                'linkki' => $row['linkki'],
-                'vastaaja' => $row['vastaaja']
+                'linkki' => $row['linkki']
             ));
 
             return $kysymys;
@@ -96,18 +94,37 @@ class Kysymys extends BaseModel {
         $query = DB::connection()->prepare('DELETE FROM Kysymys WHERE id =' . $id);
         $query->execute();
     }
-
-    public function lisaaVastaaja($kysymys_id) {
-
-        $query = DB::connection()->prepare('UPDATE Kysymys SET vastaaja = TRUE WHERE id = ' . $kysymys_id);
-        $query->execute();
-    }
     
-    public static function poistaKaikkiVastaajat() {
-
-        $query = DB::connection()->prepare('UPDATE Kysymys SET vastaaja = FALSE');
+    public static function kaikkiVastaamattomat() {
+        $query = DB::connection()->prepare('SELECT * FROM Kysymys INNER JOIN Liitos ON Kysymys.id = Liitos.kysymys_id WHERE Liitos.vastattu = FALSE');
         $query->execute();
-        return TRUE;
+        $rows = $query->fetchAll();
+        $kysymykset = array();
+
+        foreach ($rows as $row) {
+            $kysymykset[] = new Kysymys(array(
+                'id' => $row['id'],
+                'kysymys' => $row['kysymys'],
+                'istunto' => $row['istunto'],
+                'paivamaara' => $row['paivamaara'],
+                'linkki' => $row['linkki']
+            ));
+        }
+
+        return $kysymykset;
     }
+
+//    public function lisaaVastaaja($kysymys_id) {
+//
+//        $query = DB::connection()->prepare('UPDATE Kysymys SET vastaaja = TRUE WHERE id = ' . $kysymys_id);
+//        $query->execute();
+//    }
+//    
+//    public static function poistaKaikkiVastaajat() {
+//
+//        $query = DB::connection()->prepare('UPDATE Kysymys SET vastaaja = FALSE');
+//        $query->execute();
+//        return TRUE;
+//    }
 
 }

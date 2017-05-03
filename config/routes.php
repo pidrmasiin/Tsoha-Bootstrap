@@ -119,6 +119,9 @@ $routes->get('/vastaukset/:nimi', function($nimi) {
     VastausController::tulokset($nimi);
 });
 
+$routes->get('/puolueenVastaukset/:puolue/:nimi', function($puolue, $nimi) {
+    VastausController::puolueenVastaukset($puolue, $nimi);
+});
 
 
 

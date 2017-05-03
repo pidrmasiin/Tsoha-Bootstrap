@@ -43,6 +43,34 @@ class Tulos extends BaseModel {
         return $tulokset;
     }
 
+    public static function allPuolue($puolue_id) {
+// Toi DB on tässä luokka, jonka metodit löytyy libin alta
+        $query = DB::connection()->prepare('SELECT Tulos.tulos, Kysymys.kysymys FROM Tulos RIGHT JOIN Kysymys ON Tulos.kysymys_id = Kysymys.id WHERE puolue_id = :puolue_id');
+// toi nää pari metodia löytyy PDA-kirjastosta, johon tää DB:n connection metodi tän liitti
+        $query->execute(array('puolue_id' => $puolue_id));
+        $rows = $query->fetchAll();
+        $tulokset = array();
+
+
+        foreach ($rows as $row) {
+
+            $tulokset[] = (array(
+                'tulos' => $row['tulos'],
+                'kysymys' => $row['kysymys']
+//                'id' => $row['id'],
+//                'puolue_id' => $row['puolue_id'],
+//                'kysymys_id' => $row['kysymys_id'],
+//                'tulos' => $row['tulos'],
+//                'jaa' => $row['jaa'],
+//                'ei' => $row['ei'],
+//                'tyhja' => $row['tyhja'],
+//                'poissa' => $row['poissa']
+            ));
+        }
+
+        return $tulokset;
+    }
+
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
@@ -65,8 +93,6 @@ class Tulos extends BaseModel {
 
         return null;
     }
-
-    
 
     public static function kaikkiKysymyksenPuolueet($kysymys_id) {
         $query = DB::connection()->prepare('SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id');
@@ -128,7 +154,7 @@ class Tulos extends BaseModel {
         $query = DB::connection()->prepare('UPDATE Tulos SET puolue_id = :puolue_id, kysymys_id = :kysymys_id, tulos = :tulos, jaa = :jaa, ei = :ei, tyhja = :tyhja, poissa = :poissa WHERE id = ' . $id);
         $query->execute(array('puolue_id' => $this->puolue_id, 'kysymys_id' => $this->kysymys_id, 'tulos' => $this->tulos, 'jaa' => $this->jaa, 'ei' => $this->ei, 'tyhja' => $this->tyhja, 'poissa' => $this->poissa));
     }
-    
+
     public static function findJaat($kysymys_id) {
 
         $query = DB::connection()->prepare("SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id AND tulos ='jaa'");
@@ -144,7 +170,7 @@ class Tulos extends BaseModel {
 
         return $puolueet;
     }
-    
+
     public static function findEit($kysymys_id) {
 
         $query = DB::connection()->prepare("SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id AND tulos ='ei'");
@@ -160,7 +186,7 @@ class Tulos extends BaseModel {
 
         return $puolueet;
     }
-    
+
     public static function findEost($kysymys_id) {
 
         $query = DB::connection()->prepare("SELECT * FROM Tulos WHERE kysymys_id = :kysymys_id AND tulos ='eos'");

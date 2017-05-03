@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>Kysymys</th>
-            <th>Tila</th>
+            
             <th>Jaa</th>
             <th>Tyhjä/Poissa</th>
             <th>Ei</th>
@@ -17,18 +17,12 @@
         
         <tr>
             <td>{{kysymys.kysymys}}</td>
-            {% if kysymys.vastaaja != 1 %}
-            <td>Avoin</td>
+            
+            
             <td><a class="btn btn-success" href="{{base_path}}/vastaus/{{kysymys.id}}/jaa/{{nimi.id}}">Jaa</a></td>
             <td><a class="btn btn-primary" href="{{base_path}}/vastaus/{{kysymys.id}}/eos/{{nimi.id}}">En osaa sanoa</a></td>
             <td><a class="btn btn-danger" href="{{base_path}}/vastaus/{{kysymys.id}}/ei/{{nimi.id}}">Ei</a></td>
-            {% else %}
-            <td><p class="alert alert-info">Vastattu</p></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            {% endif %}
+           
         </tr>
         
         {% endfor %}
