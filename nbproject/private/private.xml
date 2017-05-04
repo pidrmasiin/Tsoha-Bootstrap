@@ -3,11 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/vastaus.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/kysymys.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/liitos.php</file>
             <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/controllers/vastaus_controller.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/tulos.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/vastaukset/tulokset.html</file>
             <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/config/routes.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/tulokset/ilmoitus.html</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/vastaukset/ilmoitus.html</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/kysymys/kysymykset.html</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/puolue.php</file>
+            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/views/vastaukset/vastaus.html</file>
             <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/app/models/kysymykset.php</file>
-            <file>file:/home/petteri/Työpöytä/tietokanta/Tsoha-Bootstrap/sql/create_tables.sql</file>
         </group>
     </open-files>
 </project-private>

@@ -1,6 +1,6 @@
 # Tietokantasovelluksen esittelysivu
 
-Tällä hetkellä vaalikonetta voi käyttää vain yksi kerrallaan eikä monesta moneen linkityksiä vielä ole. Kehittelen ensi viikolla näitä kuntoon.
+Vaalikone toimii oikein vain yksi käyttäjä kerrallaan, sillä liitostaulu tyhjennetään nimenkirjoittamisen yhteydessä. Useakaan samanaikainen käyttäjä ei silti aiheuta varsinaista virhettä, mutta toiminnallisuus kärsii.
 
 
 Yleisiä linkkejä:
