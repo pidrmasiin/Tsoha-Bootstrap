@@ -11,7 +11,7 @@
         self::set_flash_message($content);
 
         // Asetetaan näkymään base_path-muuttuja index.php:ssa määritellyllä BASE_PATH vakiolla
-        $content['base_path'] = BASE_PATH;
+        $content['http://localhost:8000/'] = BASE_PATH;
 
         // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
         if(method_exists('BaseController', 'get_user_logged_in')){

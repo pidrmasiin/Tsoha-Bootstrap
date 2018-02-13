@@ -15,7 +15,7 @@ echo "Valmis!"
 echo "Suoritetaan komento php composer.phar dump-autoload..."
 
 # Suoritetaan php composer.phar dump-autoload
-ssh $USERNAME@users.cs.helsinki.fi "
+ssh localhost:8000 "
 cd htdocs/$PROJECT_FOLDER
 php composer.phar dump-autoload
 exit"
